@@ -2,11 +2,24 @@
 <html>
 <head>
   <title>example animate logo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="asdasdsadsad">
-  <meta name="description" content="asdasdasd">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <meta name="keywords" content="punjaluck">
+  <meta name="description" content="punjaluck website">
+  <meta http-equiv="Cache-control" content="public" max-age="8640000">
   <link rel="stylesheet" type="text/css" href="./css/animation.css">
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
+  <script src="https://code.jquery.com/jquery-3.1.0.slim.min.js" integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8="   crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyB5pWVCjFg-SjSHAWNiYXkf8JgZ31h6cwM",
+      authDomain: "punjaluck-a28c1.firebaseapp.com",
+      databaseURL: "https://punjaluck-a28c1.firebaseio.com",
+      storageBucket: "",
+    };
+    firebase.initializeApp(config)
+  </script>
 </head>
 <!--  -->
 <body>
@@ -23,17 +36,5 @@
     </div>
   </div>
 </body>
-<script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyB5pWVCjFg-SjSHAWNiYXkf8JgZ31h6cwM",
-    authDomain: "punjaluck-a28c1.firebaseapp.com",
-    databaseURL: "https://punjaluck-a28c1.firebaseio.com",
-    storageBucket: "",
-  };
-  firebase.initializeApp(config);
-</script>
-<script src="https://code.jquery.com/jquery-3.1.0.slim.min.js" integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8="   crossorigin="anonymous"></script>
 <script src='./js/index.js'></script>
 </html>
