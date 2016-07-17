@@ -1,0 +1,45 @@
+body {
+  width:100%;
+  overflow: hidden;
+  height: 100vh;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  display: inline;
+}
+
+/*------------------global----------------*/
+
+.test-container {
+  position: absolute;
+  top: 50%; left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
+.test-container .test-animate-logo {
+  text-align: center;
+
+}
+
+.test-container .test-animate-logo img{
+  width: 200px;
+}
+
+.test-container .charm-text{
+  text-align: center;
+  font-size: 150px;
+}
+
+.charm-text div{
+  display: inline-block;
+  opacity: 0;
+  color: rgb(145, 28, 28);
+
+}
