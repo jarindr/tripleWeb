@@ -3,7 +3,6 @@ body {
   height: 100vh;
   margin: 0 auto;
   font-family: Montserrat;
-  overflow: hidden;
 }
 
 ul {
@@ -28,7 +27,7 @@ ul li {
   position: relative;
   top: 0;
   display: flex;
-  height: 80px;
+  height: 70px;
   align-items: center;
   background-color: white;
   box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.23);
@@ -47,11 +46,14 @@ ul li {
   height: 100%;
   margin-left: auto;
 }
+
 .nav-bar__navigation {
   padding: 0 10px;
   font-size: 12px;
   color: rgb(66, 66, 66);
+  cursor: pointer;
 }
+
 .nav-bar__navigation.ticket {
   background-color: rgb(238, 50, 50);
   color: white;
@@ -70,19 +72,66 @@ ul li {
   opacity: 0.9;
 }
 .main {
-  background-image: url('../images/bg.jpg');
+  position: absolute;
   background-size: cover;
-  height:100%;
+  height: calc(100% - 70px);
+  opacity: 0;
+  transition: 0.5s ease-in-out;
+}
+#vision-main {
+  background-image: url('../images/bg.jpg');
+}
+#mission-main {
+  background-image: url('../images/bg.jpg');
+}
+.main.active {
+  opacity: 1;
 
 }
+
+.caption {
+  padding: 50px 20% 0 20%;
+}
+
+.caption h1 {
+  color: white;
+  margin: 0;
+  font-size: 40px;
+  text-align: center;
+}
+.caption p {
+  color: white;
+  font-family: Kanit;
+  text-align: center;
+}
+
 .footer__navigation {
   display: table-cell;
   width: 50%;
   padding: 0;
   margin: 0;
   height: 100%;
-  background-color: rgb(200, 35, 60);
+  background-color: rgb(120, 30, 40);
   color: white;
   text-align: center;
   vertical-align: middle;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.1s ease-in-out;
+}
+.footer__navigation.active {
+  background-color: rgb(200, 35, 60);
+}
+
+@media only screen and (max-device-width: 667px)
+and (-webkit-device-pixel-ratio: 2) {
+  .nav-bar {
+
+  }
+  body {
+    overflow: none;
+  }
+  .footer {
+    position: static;
+  }
 }

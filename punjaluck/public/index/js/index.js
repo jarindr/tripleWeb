@@ -1,19 +1,25 @@
 $(document).ready(()=> {
-  animateLogo()
+  initFooterNavigationHandler()
 })
 
-function animateLogo () {
-  const $container = $('.charm-text')
-  let delay = 800
-  $container.find('div').each( (index,el) => {
-    addClassDelay(el,'flip',delay)
-    delay += 500
+
+function initFooterNavigationHandler() {
+  const $footerNavigations = $('.footer__navigation')
+  const $main = $('.main')
+  $(document).on('click','.footer__navigation', (e) => {
+    const item = $(e.currentTarget)
+    if (!item.hasClass('active')) {
+      item.addClass('active')
+      $footerNavigations.not(item).removeClass('active')
+    }
+    const section = item.attr('id')
+    console.log(section)
+    if(section === 'mission') {
+      $('#mission-main').addClass('active')
+      $('#vision-main').removeClass('active')
+    } else{
+      $('#mission-main').removeClass('active')
+      $('#vision-main').addClass('active')
+    }
   })
-}
-
-function addClassDelay (el,className,delay) {
-  setTimeout(() => {
-    $(el).addClass(className)
-  }, delay)
-
 }

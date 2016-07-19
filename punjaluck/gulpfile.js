@@ -8,20 +8,22 @@ const imagemin = require('gulp-imagemin')
 const uglify = require('gulp-uglify')
 const critical = require('critical')
 
-gulp.task('build',['babel','auto-prefixer','copy-html','copy-main','minify-images'], ()=> {
+
+const basePath = './public/'
+gulp.task('build',['babel','auto-prefixer','copy-html','copy-font','minify-images'], ()=> {
 })
 
 gulp.task('dev', ()=>{
-  return gulp.src('./')
+  return gulp.src(basePath)
   .pipe(webserver({
     livereload: true,
-    directoryListing: true,
-    open: true
+    open: true,
+    fallback: 'index.html'
   }))
 })
 
 gulp.task('babel', () => {
-  return gulp.src('./public/js/*.js')
+  return gulp.src(basePath + 'js/*.js')
   .pipe(sourcemaps.init())
   .pipe(babel({
     presets: ['es2015']
@@ -42,23 +44,23 @@ gulp.task('build:critical',['build'], () => {
 })
 
 gulp.task('copy-html',() => {
-  return gulp.src('./public/*.html')
+  return gulp.src(basePath+'*.html')
   .pipe(gulp.dest('./build/'))
 })
-
-gulp.task('copy-main',() => {
-  return gulp.src('./public/index/*.html')
-  .pipe(gulp.dest('./build/index/'))
+gulp.task('copy-font',()=>{
+  return gulp.src(basePath + 'fonts/**')
+  .pipe(gulp.dest('./build/fonts'))
 })
 
+
 gulp.task('minify-images',()=>{
-  return gulp.src('./public/images/**')
+  return gulp.src(basePath+ 'images/**')
   .pipe(imagemin())
   .pipe(gulp.dest('./build/images/'))
 })
 
 gulp.task('auto-prefixer', ()=>{
-  return gulp.src('./public/css/*.css')
+  return gulp.src(basePath+ 'css/*.css')
   .pipe(autoprefixer({
     browsers: ['> 1%', 'IE 10', 'last 2 versions'],
     cascade: false
