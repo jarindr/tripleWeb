@@ -4,9 +4,11 @@ const sourcemaps = require('gulp-sourcemaps')
 const babel = require('gulp-babel')
 const concat = require('gulp-concat')
 const autoprefixer = require('gulp-autoprefixer')
+const imagemin = require('gulp-imagemin')
+const uglify = require('gulp-uglify')
+const critical = require('critical')
 
-gulp.task('build',['babel','auto-prefixer','copy-html','copy-images'], ()=> {
-  console.log('============== done building ==============')
+gulp.task('build',['babel','auto-prefixer','copy-html','minify-images'], ()=> {
 })
 
 gulp.task('dev',()=>{
@@ -19,14 +21,24 @@ gulp.task('dev',()=>{
 })
 
 gulp.task('babel', () => {
-  console.log('babel start running...')
   return gulp.src('./public/js/*.js')
   .pipe(sourcemaps.init())
   .pipe(babel({
     presets: ['es2015']
   }))
+  .pipe(uglify())
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest('./build/js/'))
+})
+
+gulp.task('build:critical',['build'], () => {
+  critical.generate({
+    inline: true,
+    base: 'build',
+    src: 'index.html',
+    dest: 'build/index.html',
+    minify: true
+});
 })
 
 gulp.task('copy-html',() => {
@@ -34,8 +46,9 @@ gulp.task('copy-html',() => {
   .pipe(gulp.dest('./build/'))
 })
 
-gulp.task('copy-images',()=>{
+gulp.task('minify-images',()=>{
   return gulp.src('./public/images/**')
+  .pipe(imagemin())
   .pipe(gulp.dest('./build/images/'))
 })
 
