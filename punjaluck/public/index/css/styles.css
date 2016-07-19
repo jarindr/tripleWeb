@@ -1,0 +1,88 @@
+body {
+  width:100%;
+  height: 100vh;
+  margin: 0 auto;
+  font-family: Montserrat;
+  overflow: hidden;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  display: inline;
+}
+
+/*------------------global----------------*/
+
+.container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.nav-bar {
+  position: relative;
+  top: 0;
+  display: flex;
+  height: 80px;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.23);
+  padding: 0 50px;
+}
+
+.nav-bar__logo {
+  display: inline-flex;
+}
+.nav-bar__logo img {
+  height: 50px;
+}
+.nav-bar__navigation-container {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  margin-left: auto;
+}
+.nav-bar__navigation {
+  padding: 0 10px;
+  font-size: 12px;
+  color: rgb(66, 66, 66);
+}
+.nav-bar__navigation.ticket {
+  background-color: rgb(238, 50, 50);
+  color: white;
+  padding: 2px 10px;
+  margin-left: 10px;
+}
+
+/*========================footer==========================*/
+
+.footer {
+  position: absolute;
+  height: 60px;
+  bottom: 0;
+  width: 100%;
+  display: table;
+  opacity: 0.9;
+}
+.main {
+  background-image: url('../images/bg.jpg');
+  background-size: cover;
+  height:100%;
+
+}
+.footer__navigation {
+  display: table-cell;
+  width: 50%;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  background-color: rgb(200, 35, 60);
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+}

@@ -8,10 +8,10 @@ const imagemin = require('gulp-imagemin')
 const uglify = require('gulp-uglify')
 const critical = require('critical')
 
-gulp.task('build',['babel','auto-prefixer','copy-html','minify-images'], ()=> {
+gulp.task('build',['babel','auto-prefixer','copy-html','copy-main','minify-images'], ()=> {
 })
 
-gulp.task('dev',()=>{
+gulp.task('dev', ()=>{
   return gulp.src('./')
   .pipe(webserver({
     livereload: true,
@@ -38,12 +38,17 @@ gulp.task('build:critical',['build'], () => {
     src: 'index.html',
     dest: 'build/index.html',
     minify: true
-});
+  })
 })
 
 gulp.task('copy-html',() => {
   return gulp.src('./public/*.html')
   .pipe(gulp.dest('./build/'))
+})
+
+gulp.task('copy-main',() => {
+  return gulp.src('./public/index/*.html')
+  .pipe(gulp.dest('./build/index/'))
 })
 
 gulp.task('minify-images',()=>{
