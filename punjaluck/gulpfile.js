@@ -9,7 +9,7 @@ const uglify = require('gulp-uglify')
 const critical = require('critical')
 
 
-const basePath = './public/'
+const basePath = './public/index/'
 gulp.task('build',['babel','auto-prefixer','copy-html','copy-font','minify-images'], ()=> {
 })
 

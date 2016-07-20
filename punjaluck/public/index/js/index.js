@@ -1,9 +1,10 @@
 $(document).ready(()=> {
   initFooterNavigationHandler()
+  initNavbarHandler()
 })
 
 
-function initFooterNavigationHandler() {
+function initFooterNavigationHandler () {
   const $footerNavigations = $('.footer__navigation')
   const $main = $('.main')
   $(document).on('click','.footer__navigation', (e) => {
@@ -13,13 +14,30 @@ function initFooterNavigationHandler() {
       $footerNavigations.not(item).removeClass('active')
     }
     const section = item.attr('id')
-    console.log(section)
     if(section === 'mission') {
       $('#mission-main').addClass('active')
       $('#vision-main').removeClass('active')
-    } else{
+    } else {
       $('#mission-main').removeClass('active')
       $('#vision-main').addClass('active')
     }
   })
+}
+
+function initNavbarHandler () {
+  $(document).on('click','#hamberger-menu', (e) => {
+		$(e.currentTarget).toggleClass('open')
+    $('.nav-bar__navigation-container').toggleClass('active')
+	})
+}
+
+function switcher () {
+  const $container = $('.switcher-container')
+  const $elements = $container.find('.switcher-child')
+  `<div class='circle-navigation-container'>
+    <div class='circle-navigation'></div>
+    <div class='circle-navigation'></div>
+    <div class='circle-navigation'></div>
+  </div>`
+
 }
