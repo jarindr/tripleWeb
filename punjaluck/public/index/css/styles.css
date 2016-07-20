@@ -144,7 +144,8 @@ ul li {
   text-align: center;
 }
 #vision-main {
-  background-image: url('../images/bg.jpg');
+  background-color: red;
+
 }
 #mission-main {
   background-image: url('../images/bg.jpg');
@@ -228,8 +229,8 @@ ul li {
     position: absolute;
     display: block;
     background-color: white;
-    left: 0;
-    right: 0;
+    left:0;
+    width: 100%;
     transform: translate3d(-100vw,0,0);
     height: 100vh;
     z-index: 10;
