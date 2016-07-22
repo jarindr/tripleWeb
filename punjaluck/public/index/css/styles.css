@@ -143,11 +143,11 @@ ul li {
   width: 100%;
   text-align: center;
 }
-#vision-main {
+#partner-page {
   background-color: red;
 
 }
-#mission-main {
+#about-page {
   background-image: url('../images/bg.jpg');
 }
 .main.active {

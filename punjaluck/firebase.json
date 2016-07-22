@@ -7,8 +7,14 @@
         "headers" : [ {
           "key" : "Cache-Control",
           "value" : "max-age=31536000"
-        } ]
-      }
-    ]
+          } ]
+        }
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
   }
-}
