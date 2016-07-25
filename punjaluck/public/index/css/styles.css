@@ -133,6 +133,7 @@ ul li {
   width: 100%;
   display: table;
   opacity: 0.9;
+  z-index: 10;
 }
 .main {
   position: absolute;
@@ -143,12 +144,41 @@ ul li {
   width: 100%;
   text-align: center;
 }
+
+.slider,.slider-content {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.slider-content {
+  position: absolute;
+  transition: 1s ease-in-out;
+  opacity: 0;
+  transform: scale3d(1.2,1.2,1.2);
+
+}
+
+.slider-content.active {
+  z-index: 2;
+  opacity: 1;
+  transform: none;
+}
+
 #partner-page {
   background-color: red;
 
 }
-#about-page {
+#charm-page {
+  background-color: red;
+}
+#intro-page {
   background-image: url('../images/bg.jpg');
+}
+#board-page {
+  background-color: blue;
 }
 .main.active {
   opacity: 1;
@@ -194,6 +224,7 @@ ul li {
   position: absolute;
   right: 3%;
   bottom: 50%;
+  z-index: 50;
 }
 
 .circle-navigation {
@@ -202,6 +233,10 @@ ul li {
   border-radius: 50%;
   border: 2px solid white;
   margin: 7px 0;
+  cursor: pointer;
+}
+.circle-navigation.active {
+  background-color: white;
 }
 
 @media only screen and (max-width: 667px) {
