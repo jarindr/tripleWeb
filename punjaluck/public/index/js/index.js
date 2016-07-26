@@ -35,8 +35,9 @@ $(document).ready( () => {
 
   initFooterNavigationHandler()
   initNavbarHandler()
-  initSlider('#slider1')
-  initSlider('#slider2')
+  initSlider('#slider1', {
+    vertical: true
+  })
 })
 
 
