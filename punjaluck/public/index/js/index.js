@@ -35,9 +35,8 @@ $(document).ready( () => {
 
   initFooterNavigationHandler()
   initNavbarHandler()
-  initSlider('#slider1', {
-    vertical: true
-  })
+  Slider('#slider1').init()
+  Slider('#slider2').init()
 })
 
 
@@ -50,7 +49,7 @@ function initFooterNavigationHandler () {
     item.addClass('active')
     $footerNavigations.not(item).removeClass('active')
 
-     const section = item.attr('id')
+    const section = item.attr('id')
     History.pushState({ target: section }, null , `/${section}`)
 
   })
@@ -63,27 +62,48 @@ function initNavbarHandler () {
   })
 }
 
-function initSlider (sliderId) {
-  $(sliderId).find('.slider-content').each((index,el) => {
-    const id = $(el).attr('id')
-    const triggerClass = `trigger-${id}`
-    const active = index === 0 ? 'active':''
-    const element = `<div class='circle-navigation ${active} ${triggerClass}'></div>`
-    $(document).on('click',`.${triggerClass}`,(e) => {
-      const keyWord = triggerClass.split('-')[1]
-      const contentId = `${keyWord}-page`
-      const button = $(e.currentTarget)
-      $(sliderId).find('.slider-content').each((index,el)=>{
-        const targetId = $(el).attr('id')
-        if(targetId !== contentId){
-          $(`#${targetId}`).removeClass('active')
+function Slider (sliderId) {
+  return {
+    init (){
+      this.createSlider()
+    },
+    createSlider () {
+      $(sliderId).children('.slider-content').each((index,el) => {
+        const id = $(el).attr('id')
+        const triggerClass =`trigger-${id}`
+        this.createNavigation(index,triggerClass)
+        this.createClickEventBinder(triggerClass)
+      })
+    },
+
+    createNavigation (index,triggerClass) {
+      const active = index === 0 ? 'active':''
+      const element = `<div class='circle-navigation ${active} ${triggerClass}'></div>`
+      $(sliderId).children('.circle-navigation-container').append(element)
+    },
+    createClickEventBinder (triggerClass) {
+      $(document).on('click',`.${triggerClass}`,(e) => {
+        const keyWord = triggerClass.split('-')[1]
+        const contentId = `${keyWord}-page`
+        const button = $(e.currentTarget)
+        $(sliderId).children('.slider-content').each((index,el)=>{
+          const targetId = $(el).attr('id')
+          if(targetId !== contentId){
+            $(`#${targetId}`).removeClass('active')
+          }else{
+            $(`#${targetId}`).addClass('active')
+          }
+        })
+        button.addClass('active')
+        $(sliderId).children('.circle-navigation-container').children('.circle-navigation').not(button).removeClass('active')
+        if($(`#${contentId}`).css('background-color') === 'rgb(255, 255, 255)'){
+          $('.circle-navigation').removeAttr("style").css({'border-color':'#8b8b8b'})
+          $('.circle-navigation.active').css({'background-color':'#8b8b8b'})
         }else{
-          $(`#${targetId}`).addClass('active')
+          $('.circle-navigation').removeAttr("style").css({'border-color':'white'})
+          $('.circle-navigation.active').css({'background-color':'white'})
         }
       })
-      button.addClass('active')
-      $(sliderId).find('.circle-navigation').not(button).removeClass('active')
-    })
-    $(sliderId).find('.circle-navigation-container').append(element)
-  })
+    }
+  }
 }
