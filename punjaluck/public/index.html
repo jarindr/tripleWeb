@@ -1,28 +1,112 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>example animate logo</title>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-    <meta name="keywords" content="punjaluck">
-    <meta name="description" content="punjaluck website">
-    <meta http-equiv="Cache-control" content="public" max-age="8640000">
-    <link rel="stylesheet" type="text/css" href="./css/animation.css">
-    <link rel="stylesheet" type="text/css" href="./css/styles.css">
-  </head>
-  <body>
-    <div class='test-container'>
-      <div class='test-animate-logo rotateIn'>
-        <img src="./images/logo/Panjaluck_Logo-for-Website_to-Programmer_c1_r1_ma-01.png"></img>
+<head>
+  <title>example animate logo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="keywords" content="punjaluck">
+  <meta name="description" content="punjaluck website">
+  <meta http-equiv="Cache-control" content="public" max-age="8640000">
+  <link rel="stylesheet" type="text/css" href="./css/fonts.css">
+  <link rel="stylesheet" type="text/css" href="./css/animation.css">
+  <link rel="stylesheet" type="text/css" href="./css/styles.css">
+  <link rel="stylesheet" type="text/css" href="./css/unslider.css">
+  <link rel="stylesheet" type="text/css" href="./css/unslider-dots.css">
+</head>
+<body>
+  <div class='container'>
+    <div class='nav-bar'>
+      <div class='nav-bar__logo'>
+        <img src='./images/logo/logo_resize.png'>
       </div>
-      <div class='charm-text'>
-        <div>C</div>
-        <div>H</div>
-        <div>A</div>
-        <div>R</div>
-        <div>M</div>
+      <div id="hamberger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class='nav-bar__navigation-container'>
+        <span class='nav-bar__navigation'>KAAN SHOW</span>
+        <span class='nav-bar__navigation'>THEATRE</span>
+        <span class='nav-bar__navigation'>ABOUT US</span>
+        <span class='nav-bar__navigation'>CONTACT</span>
+        <span class='nav-bar__navigation ticket'>TICKET</span>
       </div>
     </div>
-  </body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src='./js/index.js'></script>
+    <section class='section' id='business-page'>
+      <h1>OUR BUSINESS</h1>
+      <img src='./images/logo/Punjaluck_full.png' />
+      <p>
+        บริษัท ปัญจลักษณ์พาสุข จำกัด คือ เจ้าของและผู้ดำเนินกิจการ D'LUCK CINEMATIC THEATRE และเป็นผู้สร้าง
+        นวัตกรรมให้กับอุตสาหการการท่องเที่ยว ด้วยการนำเสนอการแสดงสดรูปแบบใหม่ KAAN SHOW โดยมุ่งมั่นให้
+        การแสดงนี้ มีมาตรฐานระดับสากลในทุกๆด้าน ทั้งความคิดสร้างสรรค์ เทคโนโลยี โปดักชั่น ตลอดจนทีมงาน และ
+        การดำเนินการอย่างมืออาชีพ เราต้องการให้ KAAN เป็นการแสดงที่ผสานเทคนิกพิเศษระดับโลก<br />
+        <span>READ MORE</span>
+      </p>
+    </section>
+    <div class='sections'>
+      <section class='section' id='vision-page'>
+        <h1>VISION & MISSION</h1>
+        <p>
+          บริษัท ปัญจลักษณ์พาสุข จำกัด คือ เจ้าของและผู้ดำเนินกิจการ D'LUCK CINEMATIC THEATRE และเป็นผู้สร้าง
+          นวัตกรรมให้กับอุตสาหการการท่องเที่ยว ด้วยการนำเสนอการแสดงสดรูปแบบใหม่ KAAN SHOW โดยมุ่งมั่นให้
+          การแสดงนี้ มีมาตรฐานระดับสากลในทุกๆด้าน ทั้งความคิดสร้างสรรค์ เทคโนโลยี โปดักชั่น ตลอดจนทีมงาน และ
+          การดำเนินการอย่างมืออาชีพ เราต้องการให้ KAAN เป็นการแสดงที่ผสานเทคนิกพิเศษระดับโลก
+        </p>
+      </section>
+      <section class='section' id='corporate-page'>
+        <h1>CORPORATE VALUE</h1>
+        <video autoplay id='punjaluck-animate'>
+          <source src="./images/PJL Logo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </section>
+      <section class='section' id='partner-page'>
+        <h1>Our Partner</h1>
+        <div class='row'>
+          <div class='logo-box'>
+            <div class='logo-box__content'>
+              <img src='./images/logo/A49@1x.png' width="120">
+            </div>
+            <div class='logo-des'>A49</div>
+          </div>
+          <div class='logo-box'>
+            <div class='logo-box__content'>
+              <img src='./images/logo/Master_SANOOKDEE_30x27cm.png'  width="120">
+            </div>
+            <div class='logo-des'>SANOOKDEE TAWEESOOK</div>
+          </div>
+          <div class='logo-box'>
+            <div class='logo-box__content'>
+              <img src='./images/logo/XTP official logo.png' width='170'>
+            </div>
+            <div class='logo-des'>XTREAM PLUS</div>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='logo-box'>
+            <div class='logo-box__content'>
+              <img src='./images/logo/logo baanrig 2012@1x.png' width="120">
+            </div>
+            <div class='logo-des'>BAAN RIG</div>
+          </div>
+          <div class='logo-box'>
+            <div class='logo-box__content'>
+              <img src='./images/logo/logo-scenario.png' width="170">
+            </div>
+            <div class='logo-des'>SCENARIO</div>
+          </div>
+          <div class='logo-box'>
+            <div class='logo-box__content'>
+              <img src='./images/logo/XTP official logo.png' width="170">
+            </div>
+            <div class='logo-des'>A12</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/history.js/1.8/bundled/html4+html5/jquery.history.min.js"></script>
+<script src='./js/index.js'></script>
 </html>
