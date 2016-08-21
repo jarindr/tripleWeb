@@ -35,8 +35,20 @@ $(document).ready( () => {
 
   initFooterNavigationHandler()
   initNavbarHandler()
-  Slider('#slider1').init()
-  Slider('#slider2').init()
+  Slider('#slider-board').init()
+  const $window = $(window)
+  const $video = $('#punjaluck-animate')
+  $video[0].onended = () => {
+    $video.remove()
+    $('.corporate-quote').css({ opacity: 1 })
+  }
+  window.addEventListener('scroll', ()=>{
+    const scrollPosition = $window.scrollTop()
+    playVideo($video, scrollPosition)
+    $('.parallax').each((index,el) => {
+      parallax($(el), scrollPosition)
+    })
+  })
 })
 
 
@@ -62,6 +74,26 @@ function initNavbarHandler () {
   })
 }
 
+
+function parallax (target,scrollPosition) {
+  const parent = target.parent()
+  const bottom = parent.position().top + parent.offset().top + parent.outerHeight(true)
+  const top = parent.position().top
+  if (bottom > scrollPosition && top < scrollPosition) {
+    const move = parseInt((scrollPosition -  top)/3)
+    target.css({
+      transform: `translate3d(0,${move}px,0)`
+    })
+  }
+}
+
+function playVideo (video, scrollPosition) {
+  const position = video.position()
+  if (position.top < scrollPosition + $(window).height()){
+    video[0].play()
+  }
+}
+
 function Slider (sliderId) {
   return {
     init (){
@@ -84,7 +116,7 @@ function Slider (sliderId) {
     createClickEventBinder (triggerClass) {
       $(document).on('click',`.${triggerClass}`,(e) => {
         const keyWord = triggerClass.split('-')[1]
-        const contentId = `${keyWord}-page`
+        const contentId = `${keyWord}`
         const button = $(e.currentTarget)
         $(sliderId).children('.slider-content').each((index,el)=>{
           const targetId = $(el).attr('id')

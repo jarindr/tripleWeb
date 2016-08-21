@@ -16,7 +16,7 @@ ul li {
 }
 
 h1 {
-  color:#c8233c;
+  color:#9c171a;
   font-size: 40px;
 }
 /*------------------global----------------*/
@@ -176,19 +176,20 @@ h1 {
 .section {
   background-size: cover;
   width: 100%;
-  transition: 0.5s ease-in-out;
   text-align: center;
-  padding-top: 30px;
+  padding-top: 50px;
   box-sizing: border-box;
   padding-left: 20px;
   padding-right: 20px;
   height: calc(100vh - 70px);
   background-color: white;
+  border-bottom: 1px solid #dfdfdf;
+  overflow: hidden;
 }
 
 .slider, .slider-content {
-  height: 100%;
-  width: 100%;
+  left: 0;
+  right: 0;
   position: relative;
   background-size: cover;
   overflow: hidden;
@@ -198,7 +199,6 @@ h1 {
   position: absolute;
   transition: 1s ease-in-out;
   opacity: 0;
-  transform: scale3d(1.1,1.1,1.1);
 
 }
 
@@ -209,13 +209,10 @@ h1 {
 }
 
 .sections {
-  position: relative;
-  top: 100vh;
-  z-index: 1;
+  margin-top: 70px;
 }
 #business-page {
-  margin-top: 70px;
-  position: fixed;
+  background-color: white;
 }
 #business-page img {
   max-width: 500px;
@@ -223,6 +220,13 @@ h1 {
   text-align: center;
   display: block;
   margin: 40px auto;
+}
+#business-page video {
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
 }
 #business-page p{
   display: inline-block;
@@ -241,6 +245,7 @@ h1 {
 #vision-page {
   background-image: url('../images/bg.jpg');
   background-size: cover;
+  z-index: 4;
 }
 #vision-page h1 {
   color: white;
@@ -264,15 +269,65 @@ h1 {
 }
 #corporate-page video {
   margin-top: -30px;
-  max-width: 1000px;
-  width: 100%;
+  width: 101%;
 }
+.video-container {
+  max-width:1000px;
+  overflow:hidden;
+  margin:0 auto;
+}
+.corporate-quote {
+  opacity: 0;
+  transition: 0.5s opacity ease-in-out;
+  font-family: kanit;
+  margin: 20px 0 20px 0;
+}
+.letter-detail {
+  display: block;
+  color: black;
+  font-family: kanit;
+  font-weight: 300;
+  text-align: center;
+}
+.letter-detail--thai {
+  font-size: 12px;
+  display: block;
+  letter-spacing: 0;
+  color: #505050;
+}
+.letter-detail--eng {
+  font-size: 14px;
+  display: block;
+  letter-spacing: 1px;
+  color: #505050;
+}
+.corporate-quote .quotes {
+  vertical-align:middle;
+  text-align: left;
+  font-style: italic;
+  font-weight: 300;
+  color: #505050;
+  display: inline-block;
+}
+.red {
+  color:#9c171a;
+}
+.corporate-quote .logo {
+  vertical-align:middle;
+  text-align: left;
+  width: 300px;
+  display: inline-block;
+}
+.corporate-quote .logo img{
+  width: 80%;
+}
+
 #partner-page {
   background-color: white;
 
 }
 #partner-page .caption h1{
-  color:rgb(200, 35, 60); !important;
+  color:rgb(200, 35, 60) !important;
   margin-bottom: 0 !important;
   padding: 0;
 }
@@ -291,11 +346,25 @@ h1 {
 #board-page .caption h1{
   color:rgb(200, 35, 60) !important;
 }
+.board-card {
+  max-width: 300px;
+  display: inline-block;
+}
 .main.active {
   opacity: 1;
 
 }
+.charm .letter {
+  font-size: 100px;
+  color:#9c171a;
+  padding: 0 15px;
+  display: inline-block;
 
+}
+.charm {
+  margin-top: 20px;
+  font-family: Montserrat;
+}
 .caption {
   padding: 30px 20% 0 20%;
 }
@@ -318,16 +387,15 @@ h1 {
 
 .circle-navigation-container {
   position: absolute;
-  right: 3%;
-  bottom: 50%;
-  z-index: 50;
+  z-index: 5;
 }
 
 .circle-navigation {
+  display: inline-block;
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  border: 2px solid white;
+  border: 2px solid #777777;
   margin: 7px 0;
   cursor: pointer;
   transition: 1s ease-in-out;
@@ -337,14 +405,14 @@ h1 {
   background-color: white;
 }
 
-@media only screen and (max-width: 667px) {
+@media only screen and (max-width: 668px) {
 
   .nav-bar {
     position: fixed;
     padding: 0 20px;
   }
   .section {
-    padding-top: 50px;
+    padding-top: 20px;
     height: auto;
   }
   #hamberger-menu {
@@ -373,7 +441,6 @@ h1 {
     transform: translate3d(0,0,0);
     transition: 0.3s ease-in-out;
   }
-
   .nav-bar__navigation {
     display: block;
     width: 100%;
