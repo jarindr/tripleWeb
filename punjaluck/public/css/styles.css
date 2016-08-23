@@ -17,10 +17,30 @@ ul li {
 
 h1 {
   color:#9c171a;
-  font-size: 40px;
+  font-size: 40px!important;
 }
 /*------------------global----------------*/
 
+.side-navigation {
+  position: fixed;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+  z-index: 200;
+  text-indent: -9999px;
+}
+.side-navigation .dot-nav {
+  width: 8px;
+  height: 8px;
+  margin: 5px 0;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid #c3c3c3;
+  cursor: pointer;
+}
+.side-navigation .dot-nav.active {
+  background-color: #c3c3c3;
+}
 .row {
   display: block;
 }
@@ -56,6 +76,8 @@ h1 {
   position: relative;
   height: 100%;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-bar {
@@ -174,6 +196,7 @@ h1 {
   z-index: 10;
 }
 .section {
+  position: relative;
   background-size: cover;
   width: 100%;
   text-align: center;
@@ -185,6 +208,7 @@ h1 {
   background-color: white;
   border-bottom: 1px solid #dfdfdf;
   overflow: hidden;
+  min-height: 700px;
 }
 
 .slider, .slider-content {
@@ -243,7 +267,7 @@ h1 {
   font-weight: bold;
 }
 #vision-page {
-  background-image: url('../images/bg.jpg');
+  background-image: url('../images/Panjaluck_BG_FPO BG.png');
   background-size: cover;
   z-index: 4;
 }
@@ -321,7 +345,15 @@ h1 {
 .corporate-quote .logo img{
   width: 80%;
 }
-
+.board-detail {
+  text-align: left;
+  font-family: kanit;
+  font-size: 13px;
+  margin-top: 20px;
+}
+.bold {
+  font-weight: 300;
+}
 #partner-page {
   background-color: white;
 
@@ -347,12 +379,17 @@ h1 {
   color:rgb(200, 35, 60) !important;
 }
 .board-card {
-  max-width: 300px;
-  display: inline-block;
+  padding: 0 30px;
+}
+.board-card img {
+  width: 100%;
 }
 .main.active {
   opacity: 1;
 
+}
+.board-container {
+  padding: 0 20%;
 }
 .charm .letter {
   font-size: 100px;
@@ -405,23 +442,36 @@ h1 {
   background-color: white;
 }
 
+@media only screen and (max-width: 768px) {
+  .section {
+    padding-top: 20px;
+    padding-bottom: 50px;
+    height: auto;
+  }
+  .board-container {
+    padding: 0 5%;
+  }
+}
 @media only screen and (max-width: 668px) {
 
   .nav-bar {
     position: fixed;
     padding: 0 20px;
   }
-  .section {
-    padding-top: 20px;
-    height: auto;
-  }
+
   #hamberger-menu {
     display: block;
+  }
+  .board-container {
+    padding: 0;
   }
 
   .nav-bar__logo {
     position: relative;
     z-index: 20;
+  }
+  .corporate-quote .logo {
+    text-align: center;
   }
 
   .nav-bar__navigation-container {

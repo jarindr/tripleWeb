@@ -30,27 +30,23 @@
 })(window)
 
 $(document).ready( () => {
-  History.Adapter.trigger(window, 'statechange')
-  if(window.location.pathname === '/')  History.pushState({ target: 'about' }, null , `/about`)
-
   initFooterNavigationHandler()
   initNavbarHandler()
-  Slider('#slider-board').init()
-  const $window = $(window)
-  const $video = $('#punjaluck-animate')
-  $video[0].onended = () => {
-    $video.remove()
-    $('.corporate-quote').css({ opacity: 1 })
-  }
-  window.addEventListener('scroll', ()=>{
-    const scrollPosition = $window.scrollTop()
-    playVideo($video, scrollPosition)
-    $('.parallax').each((index,el) => {
-      parallax($(el), scrollPosition)
-    })
-  })
+  initSideBarNav()
+  bindScrollEvent()
+  $('#slider1').unslider()
 })
 
+
+function initSideBarNav () {
+  let dots = ''
+  $('.section').each((index, el) => {
+    const id = $(el).prop('id')
+    dots += `<div class='dot-nav'>${id}</div>`
+  })
+  const htmlDots = $.parseHTML(dots)
+  $(htmlDots).appendTo($('.side-navigation'))
+}
 
 function initFooterNavigationHandler () {
   const $footerNavigations = $('.footer__navigation')
@@ -67,20 +63,53 @@ function initFooterNavigationHandler () {
   })
 }
 
+function bindScrollEvent () {
+  const $window = $(window)
+  const $video = $('#punjaluck-animate')
+  $video[0].onended = () => {
+    $video.remove()
+    $('.corporate-quote').css({ opacity: 1 })
+  }
+  window.addEventListener('scroll', ()=>{
+    const scrollPosition = $window.scrollTop()
+    playVideo($video, scrollPosition)
+    $('.parallax').each((index,el) => {
+      parallax($(el), scrollPosition)
+    })
+    $('.dot-nav').each((index,el) => {
+      const id = $(el).text()
+      const $section = $(`#${id}`)
+      const top = $section.offset().top - 71
+      const bottom = top + $section.outerHeight(true)
+      if(bottom > scrollPosition && top < scrollPosition) {
+        $(el).addClass('active')
+      } else {
+        $(el).removeClass('active')
+      }
+    })
+  })
+}
+
 function initNavbarHandler () {
   $(document).on('click','#hamberger-menu', (e) => {
     $(e.currentTarget).toggleClass('open')
     $('.nav-bar__navigation-container').toggleClass('active')
+  })
+  $(document).on('click','.dot-nav', (e) => {
+    const top = $(`#${$(e.currentTarget).text()}`).offset().top - 70
+    $('html, body').animate({
+        scrollTop: top
+      }, 500)
   })
 }
 
 
 function parallax (target,scrollPosition) {
   const parent = target.parent()
-  const bottom = parent.position().top + parent.offset().top + parent.outerHeight(true)
+  const bottom = parent.offset().top + parent.outerHeight(true) - 70
   const top = parent.position().top
-  if (bottom > scrollPosition && top < scrollPosition) {
-    const move = parseInt((scrollPosition -  top)/3)
+  if (bottom > scrollPosition && top  < scrollPosition) {
+    const move = parseInt((scrollPosition -  top)/4)
     target.css({
       transform: `translate3d(0,${move}px,0)`
     })
@@ -91,51 +120,5 @@ function playVideo (video, scrollPosition) {
   const position = video.position()
   if (position.top < scrollPosition + $(window).height()){
     video[0].play()
-  }
-}
-
-function Slider (sliderId) {
-  return {
-    init (){
-      this.createSlider()
-    },
-    createSlider () {
-      $(sliderId).children('.slider-content').each((index,el) => {
-        const id = $(el).attr('id')
-        const triggerClass =`trigger-${id}`
-        this.createNavigation(index,triggerClass)
-        this.createClickEventBinder(triggerClass)
-      })
-    },
-
-    createNavigation (index,triggerClass) {
-      const active = index === 0 ? 'active':''
-      const element = `<div class='circle-navigation ${active} ${triggerClass}'></div>`
-      $(sliderId).children('.circle-navigation-container').append(element)
-    },
-    createClickEventBinder (triggerClass) {
-      $(document).on('click',`.${triggerClass}`,(e) => {
-        const keyWord = triggerClass.split('-')[1]
-        const contentId = `${keyWord}`
-        const button = $(e.currentTarget)
-        $(sliderId).children('.slider-content').each((index,el)=>{
-          const targetId = $(el).attr('id')
-          if(targetId !== contentId){
-            $(`#${targetId}`).removeClass('active')
-          }else{
-            $(`#${targetId}`).addClass('active')
-          }
-        })
-        button.addClass('active')
-        $(sliderId).children('.circle-navigation-container').children('.circle-navigation').not(button).removeClass('active')
-        if($(`#${contentId}`).css('background-color') === 'rgb(255, 255, 255)'){
-          $('.circle-navigation').removeAttr("style").css({'border-color':'#8b8b8b'})
-          $('.circle-navigation.active').css({'background-color':'#8b8b8b'})
-        }else{
-          $('.circle-navigation').removeAttr("style").css({'border-color':'white'})
-          $('.circle-navigation.active').css({'background-color':'white'})
-        }
-      })
-    }
   }
 }
