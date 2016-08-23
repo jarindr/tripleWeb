@@ -396,7 +396,24 @@ h1 {
   color:#9c171a;
   padding: 0 15px;
   display: inline-block;
+}
+.collapse--faq {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+}
+.collapse--faq .collapse-header {
+  background-color: #a61a1f;
+  color: white;
+  padding: 12px 50px 12px 50px;
+  vertical-align: middle;
 
+}
+.collapse--faq .collapse-content {
+  background-color: #e0e0e0;
+  padding-left: 5%;
+  padding-right: 5%;
+  display: none;
 }
 .charm {
   margin-top: 20px;
@@ -440,6 +457,46 @@ h1 {
 
 .circle-navigation.active {
   background-color: white;
+}
+
+
+/*=================PLUS MINUS */
+
+.xbutton {
+    vertical-align: middle;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 10px;
+}
+.xbutton::before {
+  content: "";
+  position: absolute;
+  background-color: white;
+  transition: transform 0.25s ease-out;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  margin-left: -2px;
+}
+.xbutton::after {
+  content: "";
+  position: absolute;
+  background-color: white;
+  transition: transform 0.25s ease-out;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  margin-top: -2px;
+}
+.xbutton.active::before {
+  transform: rotate(90deg);
+}
+.xbutton.active::after {
+  transform: rotate(180deg);
 }
 
 @media only screen and (max-width: 768px) {

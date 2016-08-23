@@ -35,6 +35,12 @@ $(document).ready( () => {
   initSideBarNav()
   bindScrollEvent()
   $('#slider1').unslider()
+  $('.xbutton').click((e) => {
+    const $target = $(e.currentTarget)
+    $target.toggleClass('active')
+    $target.parent().siblings('.collapse-content').slideToggle('fast')
+    console.log(  $target.closest())
+  })
 })
 
 
