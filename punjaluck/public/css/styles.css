@@ -200,7 +200,7 @@ h1 {
   background-size: cover;
   width: 100%;
   text-align: center;
-  padding-top: 50px;
+  padding-top: 40px;
   box-sizing: border-box;
   padding-left: 20px;
   padding-right: 20px;
@@ -401,19 +401,38 @@ h1 {
   max-width: 1000px;
   margin: 0 auto;
   text-align: left;
+  border-bottom: 1px solid white;
+  box-sizing: border-box;
 }
 .collapse--faq .collapse-header {
-  background-color: #a61a1f;
-  color: white;
+  background-color: #c9c6c6;
+  color: black;
   padding: 12px 50px 12px 50px;
   vertical-align: middle;
-
+}
+.collapse--faq.active .collapse-header {
+  background-color: #a61a1f;
+  color: white;
 }
 .collapse--faq .collapse-content {
   background-color: #e0e0e0;
-  padding-left: 5%;
-  padding-right: 5%;
-  display: none;
+  padding: 10px 5%;
+  color: #626262;
+}
+.collapse--faq.active .collapse-content {
+  display: block;
+}
+.collapse-container {
+  margin-top: 30px;
+}
+.apply-now {
+  background-color: #a61a1f;
+  color: white;
+  font-size: 12px;
+  width: fit-content;
+  padding: 10px 40px;
+  cursor: pointer;
+  margin: 30px auto;
 }
 .charm {
   margin-top: 20px;
@@ -473,7 +492,7 @@ h1 {
 .xbutton::before {
   content: "";
   position: absolute;
-  background-color: white;
+  background-color: black;
   transition: transform 0.25s ease-out;
   top: 0;
   left: 50%;
@@ -484,7 +503,7 @@ h1 {
 .xbutton::after {
   content: "";
   position: absolute;
-  background-color: white;
+  background-color: black;
   transition: transform 0.25s ease-out;
   top: 50%;
   left: 0;
@@ -492,11 +511,13 @@ h1 {
   height: 2px;
   margin-top: -2px;
 }
-.xbutton.active::before {
+.collapse--faq.active .xbutton::before {
   transform: rotate(90deg);
+  background-color: white;
 }
-.xbutton.active::after {
+.collapse--faq.active .xbutton::after {
   transform: rotate(180deg);
+  background-color: white;
 }
 
 @media only screen and (max-width: 768px) {

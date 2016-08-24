@@ -1,48 +1,10 @@
-(function(window,undefined){
-
-  // Bind to StateChange Event
-  History.Adapter.bind(window,'statechange', () => { // Note: We are using statechange instead of popstate
-    const state = History.getState()
-    const target = state.data.target
-
-    switch (target) {
-
-      case 'about':
-      $('#about-page').addClass('active')
-      $('#partner-page').removeClass('active')
-      $('#about').addClass('active')
-      $('#partner').removeClass('active')
-      break
-
-      case 'partner':
-      $('#about-page').removeClass('active')
-      $('#partner-page').addClass('active')
-      $('#partner').addClass('active')
-      $('#about').removeClass('active')
-      break
-
-      default:
-
-    }
-  })
-  // Change our States
-
-})(window)
-
 $(document).ready( () => {
-  initFooterNavigationHandler()
   initNavbarHandler()
   initSideBarNav()
   bindScrollEvent()
   $('#slider1').unslider()
-  $('.xbutton').click((e) => {
-    const $target = $(e.currentTarget)
-    $target.toggleClass('active')
-    $target.parent().siblings('.collapse-content').slideToggle('fast')
-    console.log(  $target.closest())
-  })
+  handleClickEvents()
 })
-
 
 function initSideBarNav () {
   let dots = ''
@@ -52,21 +14,6 @@ function initSideBarNav () {
   })
   const htmlDots = $.parseHTML(dots)
   $(htmlDots).appendTo($('.side-navigation'))
-}
-
-function initFooterNavigationHandler () {
-  const $footerNavigations = $('.footer__navigation')
-  const $main = $('.main')
-
-  $(document).on('click','.footer__navigation', (e) => {
-    const item = $(e.currentTarget)
-    item.addClass('active')
-    $footerNavigations.not(item).removeClass('active')
-
-    const section = item.attr('id')
-    History.pushState({ target: section }, null , `/${section}`)
-
-  })
 }
 
 function bindScrollEvent () {
@@ -109,6 +56,15 @@ function initNavbarHandler () {
   })
 }
 
+function handleClickEvents() {
+  $('.collapse--faq').click((e) => {
+    const $target = $(e.currentTarget)
+    $target.toggleClass('active')
+    $target.siblings().removeClass('active')
+    $target.find('.collapse-content').slideToggle('fast')
+    $target.siblings().find('.collapse-content').slideUp('fast')
+  })
+}
 
 function parallax (target,scrollPosition) {
   const parent = target.parent()
