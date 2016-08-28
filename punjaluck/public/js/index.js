@@ -5,6 +5,8 @@ $(document).ready( () => {
   $('#slider1').unslider()
   handleClickEvents()
   modalHideInit()
+  $('.unslider-arrow.next').text('>')
+  $('.unslider-arrow.prev').text('<')
 })
 
 function initSideBarNav () {
@@ -52,8 +54,8 @@ function initNavbarHandler () {
   $(document).on('click','.dot-nav', (e) => {
     const top = $(`#${$(e.currentTarget).text()}`).offset().top - 70
     $('html, body').animate({
-        scrollTop: top
-      }, 500)
+      scrollTop: top
+    }, 500)
   })
 }
 
