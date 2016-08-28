@@ -4,6 +4,7 @@ $(document).ready( () => {
   bindScrollEvent()
   $('#slider1').unslider()
   handleClickEvents()
+  modalHideInit()
 })
 
 function initSideBarNav () {
@@ -54,6 +55,20 @@ function initNavbarHandler () {
         scrollTop: top
       }, 500)
   })
+}
+
+function modalHideInit () {
+  $('.modal-trigger').click((e)=>{
+    e.preventDefault()
+    const $this = $(e.currentTarget)
+    const id = $this.attr('href')
+    $(id).fadeIn('fast')
+  })
+  $('.x-modal').click(e=>{
+    const $this = $(e.currentTarget)
+    $('.modal-hide-container').fadeOut('fast')
+  })
+
 }
 
 function handleClickEvents() {

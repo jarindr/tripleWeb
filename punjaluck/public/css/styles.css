@@ -20,6 +20,64 @@ h1 {
   font-size: 40px!important;
 }
 /*------------------global----------------*/
+.thai {
+  font-family: kanit;
+}
+.modal-hide-container {
+  position: absolute;
+  background-color: rgba(255,255,255,0.9);
+  left: 0;
+  right: 0;
+  height: 700px;
+  z-index: 20;
+  display: none;
+}
+.x-modal {
+  cursor: pointer;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  background-color: #636363;
+  border: 1px solid rgb(213, 213, 213);
+  color: white;
+  position: absolute;
+  text-align: center;
+  line-height: 25px;
+  font-size: 10px;
+  right: 10px;
+  top: 10px;
+}
+.modal-hide {
+  position: absolute;
+  z-index: 30;
+  background-color: #f7f7f7;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: left;
+  width: 80%;
+  box-shadow: 1px 1px 10px 1px rgb(222, 222, 222);
+}
+.modal-hide--logo {
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+.modal-hide--logo img{
+  padding-left: 5%;
+}
+
+.modal-hide img {
+  max-width: 30%;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 auto;
+}
+.modal-hide .modal-content {
+  padding-left: 5%;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 65%;
+}
 
 .side-navigation {
   position: fixed;
@@ -115,7 +173,7 @@ h1 {
 }
 
 .nav-bar__navigation.ticket {
-  background-color: rgb(238, 50, 50);
+  background-color: rgb(205, 180, 117);
   color: white;
   padding: 2px 10px;
   margin-left: 10px;
@@ -268,6 +326,7 @@ h1 {
 }
 #vision-page {
   background-image: url('../images/Panjaluck_BG_FPO BG.png');
+  background-position: center;
   background-size: cover;
   z-index: 4;
 }
@@ -348,7 +407,6 @@ h1 {
 .board-detail {
   text-align: left;
   font-family: kanit;
-  font-size: 13px;
   margin-top: 20px;
 }
 .bold {
