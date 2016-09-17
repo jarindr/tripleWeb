@@ -1,12 +1,17 @@
 $(document).ready( () => {
   initNavbarHandler()
-  initSideBarNav()
+  if($(window).width() > 768 ) {
+    initSideBarNav()
+  }
   bindScrollEvent()
-  $('#slider1').unslider()
+  $('#slider1').unslider({
+    arrows: {
+      prev: '<i class="flaticon-back slide-arrows left"></i>',
+      next: '<i class="flaticon-next slide-arrows right"></i>',
+    }
+  })
   handleClickEvents()
   modalHideInit()
-  $('.unslider-arrow.next').text('>')
-  $('.unslider-arrow.prev').text('<')
 })
 
 function initSideBarNav () {
@@ -26,24 +31,26 @@ function bindScrollEvent () {
     $video.remove()
     $('.corporate-quote').css({ opacity: 1 })
   }
-  window.addEventListener('scroll', ()=>{
-    const scrollPosition = $window.scrollTop()
-    playVideo($video, scrollPosition)
-    $('.parallax').each((index,el) => {
-      parallax($(el), scrollPosition)
+  if($(window).width() > 768 ) {
+    window.addEventListener('scroll', ()=>{
+      const scrollPosition = $window.scrollTop()
+      playVideo($video, scrollPosition)
+      $('.parallax').each((index,el) => {
+        parallax($(el), scrollPosition)
+      })
+      $('.dot-nav').each((index,el) => {
+        const id = $(el).text()
+        const $section = $(`#${id}`)
+        const top = $section.offset().top - 71
+        const bottom = top + $section.outerHeight(true)
+        if(bottom > scrollPosition && top < scrollPosition) {
+          $(el).addClass('active')
+        } else {
+          $(el).removeClass('active')
+        }
+      })
     })
-    $('.dot-nav').each((index,el) => {
-      const id = $(el).text()
-      const $section = $(`#${id}`)
-      const top = $section.offset().top - 71
-      const bottom = top + $section.outerHeight(true)
-      if(bottom > scrollPosition && top < scrollPosition) {
-        $(el).addClass('active')
-      } else {
-        $(el).removeClass('active')
-      }
-    })
-  })
+  }
 }
 
 function initNavbarHandler () {
